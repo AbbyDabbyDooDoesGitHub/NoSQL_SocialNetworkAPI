@@ -1,40 +1,81 @@
+// IMPORT REQUIREMENTS ---------------------------------------
 const { Schema, model } = require('mongoose');
-const Reaction = require('./Reaction');
+const Reaction = require("./Reaction");
 
-// Schema to create Thought model
+const Thought = model("Thought", thoughtSchema);
+
+
+
+// SCHEMA TO CREATE THOUGHT ----------------------------------
 const thoughtSchema = new Schema(
+
   {
+
     thoughtText: {
-      // * String
+      // String
       type: String,
-      // * Required
+      // Required
       required: true,
-      // * Must be between 1 and 280 characters
+      // Must be between 1 and 280 characters
       min_length: 1,
-      max_length: 50,
+      max_length: 280,
     },
+
+
     createdAt: {
-      //! * Date
-      //! * Set default value to the current timestamp
-      //! * Use a getter method to format the timestamp on query
+      // Date
+      type: Date,
+      // Set default value to the current timestamp
+      default: Date.now,
+      // Use a getter method to format the timestamp on query
+      get: formatDate,
     },
+
+
     username: { //The user that created this thought
-      // * String
+      // String
       type: String,
-      // * Required
+      // Required
       required: true,
     },
-    reactions: { //These are like replies
-      //! * Array of nested documents created with the `reactionSchema`
-    }
+
+
+    reactions: [ 
+      // Array of nested documents created with the `reactionSchema`
+      Reaction
+    ]
+
   },
-  // {
-  //   toJSON: {
-  //     getters: true,
-  //   },
-  // }
+
+
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true,
+    },
+    id: false,
+  }
+
 );
 
-const Thought = model('thought', thoughtSchema);
 
+
+// COUNT REACTIONS -------------------------------------------
+thoughtSchema
+  .virtual("reactionCount")
+  .get(function () {
+    return this.reactions.length;
+  }
+);
+
+
+  
+// FORMAT DATE -----------------------------------------------
+function formatDate(date) {
+  return date.toLocaleString();
+}; 
+
+
+
+// EXPORT ----------------------------------------------------
 module.exports = Thought;

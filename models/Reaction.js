@@ -1,46 +1,71 @@
-// **Schema Settings**:
-// Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
-// This will not be a model, but rather will be used as the `reaction` field's subdocument schema in the `Thought` model.
+// IMPORT REQUIREMENTS ---------------------------------------
+const { Schema, Types } = require('mongoose');
 
-const { Schema, model } = require('mongoose');
-// const ReactionSchema = require('./Reaction');
+const Reaction = model("Reaction", reactionSchema);
 
-// Schema to create Reaction schema
+
+
+// SCHEMA TO CREATE REACTION ---------------------------------
 const reactionSchema = new Schema(
+  
   {
-    reactionId: {
-      // * Use Mongoose's ObjectId data type
-      type: Object,
-      //! * Default value is set to a new ObjectId
 
+    reactionId: {
+      // Use Mongoose's ObjectId data type
+      type: Object,
+      // Default value is set to a new ObjectId
+      default: () => new Types.ObjectId(),
     },
+
+
     reactionBody: {
-      // * String
+      // String
       type: String,
-      // * Required
+      // Required
       required: true,
-      // * 280 character maximum
+      // 280 character maximum
       max_length: 280,
     },
+
+
     username: { //The user that created this thought
-      // * String
+      // String
       type: String,
-      // * Required
+      // Required
       required: true,
     },
+
+
     createdAt: {
-      //! * Date
-      //! * Set default value to the current timestamp
-      //! * Use a getter method to format the timestamp on query
+      // Date
+      type: Date,
+      // Set default value to the current timestamp
+      default: Date.now,
+      // Use a getter method to format the timestamp on query
+      get: formatDate,
     },
+
   },
-  // {
-  //   toJSON: {
-  //     getters: true,
-  //   },
-  // }
+
+
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+    _id: false,
+  }
+  
 );
 
-const Reaction = model('reaction', reactionSchema);
 
+
+// FORMAT DATE -----------------------------------------------
+function formatDate(date) {
+  return date.toLocaleString();
+}; 
+
+
+
+// EXPORT ----------------------------------------------------
 module.exports = Reaction;

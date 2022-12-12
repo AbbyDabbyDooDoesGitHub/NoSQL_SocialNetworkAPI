@@ -1,45 +1,79 @@
+// IMPORT REQUIREMENTS ---------------------------------------
 const { Schema, model } = require('mongoose');
-// const assignmentSchema = require('./Assignment');
 
-// Schema to create User model
-const userSchema = new Schema(
+const User = model("User", userSchema);
+
+
+
+// SCHEMA TO CREATE USER -------------------------------------
+const userSchema = new Schema( 
+
   {
+    
     username: {
-      // * String
+      // String
       type: String,
-      //! * Unique
-
-      // * Required
+      // Unique
+      unique: true,
+      // Required
       required: true,
-      // * Trimmed
-      max_length: 50,
+      // Trimmed
+      trim: true,
     },
+
+
     email: {
-      // * String
+      // String
       type: String,
-      //! * Must match a valid email address (look into Mongoose's matching validation)
-
-      //! * Unique
-
-      // * Required
+      // Must match a valid email address (look into Mongoose's matching validation)
+      match: [ /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, "MUST ENTER A VALID EMAIL",],
+      // Unique
+      unique: true,
+      // Required
       required: true,
-      // * Trimmed
-      max_length: 100,
     },
-    thoughts: {
-      //! * Array of `_id` values referencing the `Thought` model
-    },
-    friends: {
-      //! * Array of `_id` values referencing the `User` model (self-reference)
-    }
+
+
+    thoughts: [
+      // Array of `_id` values referencing the `Thought` model
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Thought",
+      },
+    ],
+
+
+    friends: [
+      // Array of `_id` values referencing the `User` model (self-reference)
+        {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+        },
+    ]
+
   },
-  // {
-  //   toJSON: {
-  //     getters: true,
-  //   },
-  // }
+
+
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+  }
+
 );
 
-const User = model('user', userSchema);
 
+
+// FRIENDCOUNT -----------------------------------------------
+userSchema
+  .virtual("friendCount")
+  .get(function () {
+    return this.friends.length;
+  }
+);
+
+
+
+// EXPORT ----------------------------------------------------
 module.exports = User;
