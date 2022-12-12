@@ -1,8 +1,6 @@
 // IMPORT REQUIREMENTS ---------------------------------------
 const { Schema, Types } = require('mongoose');
 
-const Reaction = model("Reaction", reactionSchema);
-
 
 
 // SCHEMA TO CREATE REACTION ---------------------------------
@@ -65,7 +63,7 @@ function formatDate(date) {
   return date.toLocaleString();
 }; 
 
-
+const Reaction = model("Reaction", reactionSchema);
 
 // EXPORT ----------------------------------------------------
 module.exports = Reaction;

@@ -1,8 +1,6 @@
 // IMPORT REQUIREMENTS ---------------------------------------
 const { Schema, model } = require('mongoose');
 
-const User = model("User", userSchema);
-
 
 
 // SCHEMA TO CREATE USER -------------------------------------
@@ -73,7 +71,7 @@ userSchema
   }
 );
 
-
+const User = model("User", userSchema);
 
 // EXPORT ----------------------------------------------------
 module.exports = User;

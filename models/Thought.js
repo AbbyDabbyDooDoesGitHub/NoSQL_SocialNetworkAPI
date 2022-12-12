@@ -2,8 +2,6 @@
 const { Schema, model } = require('mongoose');
 const Reaction = require("./Reaction");
 
-const Thought = model("Thought", thoughtSchema);
-
 
 
 // SCHEMA TO CREATE THOUGHT ----------------------------------
@@ -75,7 +73,7 @@ function formatDate(date) {
   return date.toLocaleString();
 }; 
 
-
+const Thought = model("Thought", thoughtSchema);
 
 // EXPORT ----------------------------------------------------
 module.exports = Thought;
