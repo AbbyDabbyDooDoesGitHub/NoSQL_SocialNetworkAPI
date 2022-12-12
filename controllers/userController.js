@@ -1,31 +1,15 @@
 // ObjectId() method for converting studentId string into an ObjectId for querying database
 const { ObjectId } = require('mongoose').Types;
-const { Student, Course } = require('../models');
 
-// TODO: Create an aggregate function to get the number of students overall
-const headCount = async () =>
-  Student.aggregate()
-    // Your code here
-    .then((numberOfStudents) => numberOfStudents);
+const { User, Thought } = require("../models");
 
-// Execute the aggregate method on the Student model and calculate the overall grade by using the $avg operator
-const grade = async (studentId) =>
-  Student.aggregate([
-    // TODO: Ensure we include only the student who can match the given ObjectId using the $match operator
-    {
-      // Your code here
-    },
-    {
-      $unwind: '$assignments',
-    },
-    // TODO: Group information for the student with the given ObjectId alongside an overall grade calculated using the $avg operator
-    {
-      // Your code here
-    },
-  ]);
+
 
 module.exports = {
-  // Get all students
+
+
+
+  //! Get all students
   getStudents(req, res) {
     Student.find()
       .then(async (students) => {
@@ -40,7 +24,10 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // Get a single student
+
+
+
+  //! Get a single student
   getSingleStudent(req, res) {
     Student.findOne({ _id: req.params.studentId })
       .select('-__v')
@@ -58,13 +45,19 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // create a new student
+
+
+
+  //! create a new student
   createStudent(req, res) {
     Student.create(req.body)
       .then((student) => res.json(student))
       .catch((err) => res.status(500).json(err));
   },
-  // Delete a student and remove them from the course
+
+
+
+  //! Delete a student and remove them from the course
   deleteStudent(req, res) {
     Student.findOneAndRemove({ _id: req.params.studentId })
       .then((student) =>
@@ -89,7 +82,9 @@ module.exports = {
       });
   },
 
-  // Add an assignment to a student
+
+
+  //! Add an assignment to a student
   addAssignment(req, res) {
     console.log('You are adding an assignment');
     console.log(req.body);
@@ -107,7 +102,10 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Remove assignment from a student
+
+
+
+  //! Remove assignment from a student
   removeAssignment(req, res) {
     Student.findOneAndUpdate(
       { _id: req.params.studentId },
@@ -123,4 +121,17 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+
+
 };
+
+
+
+
+
+
+
+
+
+
