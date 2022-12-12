@@ -1,13 +1,28 @@
-const { Course, Student } = require('../models');
+// IMPORT REQUIREMENTS ---------------------------------------
+const { Thought, Reaction, User } = require("../models");
 
+
+
+// EXPORT FOR USER -------------------------------------------
 module.exports = {
-  // Get all courses
+
+  //! THOUGHT SECTION ----------------------------------------
+
+
+  // GET ALL THOUGHTS
+
+  //! Get all courses
   getCourses(req, res) {
     Course.find()
       .then((courses) => res.json(courses))
       .catch((err) => res.status(500).json(err));
   },
-  // Get a course
+
+
+
+  // GET A THOUGHT
+
+  //! Get a course
   getSingleCourse(req, res) {
     Course.findOne({ _id: req.params.courseId })
       .select('-__v')
@@ -18,7 +33,12 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Create a course
+
+
+
+  // CREATE A NEW THOUGHT
+
+  //! Create a course
   createCourse(req, res) {
     Course.create(req.body)
       .then((course) => res.json(course))
@@ -27,7 +47,12 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // Delete a course
+
+
+
+  // DELETE A THOUGHT
+
+  //! Delete a course
   deleteCourse(req, res) {
     Course.findOneAndDelete({ _id: req.params.courseId })
       .then((course) =>
@@ -38,7 +63,12 @@ module.exports = {
       .then(() => res.json({ message: 'Course and students deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
-  // Update a course
+
+
+
+  // UPDATE A THOUGHT
+
+  //! Update a course
   updateCourse(req, res) {
     Course.findOneAndUpdate(
       { _id: req.params.courseId },
@@ -52,5 +82,14 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+
+
+
+  //! REACTION SECTION ---------------------------------------
+
+  // ADD A REACTION
+  // REMOVE A REACTION
+
 };
 
