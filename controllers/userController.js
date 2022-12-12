@@ -1,9 +1,9 @@
-// ObjectId() method for converting studentId string into an ObjectId for querying database
-
+// IMPORT REQUIREMENTS ---------------------------------------
 const { User, Thought } = require("../models");
 
 
 
+// EXPORT FOR USER -------------------------------------------
 module.exports = {
 
   // GET ALL USERS
