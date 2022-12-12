@@ -1,3 +1,22 @@
+// IMPORT REQUIREMENTS ---------------------------------------
+const router = require('express').Router();
+const thoughtRoutes = require('./thoughtRoutes');
+const userRoutes = require('./userRoutes');
+
+
+
+// ROUTER PATHS ----------------------------------------------
+router.use('/thoughts', thoughtRoutes);
+router.use('/users', userRoutes);
+
+
+
+// EXPORT ----------------------------------------------------
+module.exports = router;
+
+
+
+
 // ### API Routes
 
 // **`/api/users`**
@@ -19,12 +38,3 @@
 // * `PUT` to update a user by its `_id`
 
 // * `DELETE` to remove user by its `_id`
-
-const router = require('express').Router();
-const thoughtRoutes = require('./thoughtRoutes');
-const userRoutes = require('./userRoutes');
-
-router.use('/api/thoughts', thoughtRoutes);
-router.use('/api/users', userRoutes);
-
-module.exports = router;
