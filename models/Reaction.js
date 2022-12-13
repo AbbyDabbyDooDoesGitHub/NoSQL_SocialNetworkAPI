@@ -63,7 +63,7 @@ function formatDate(date) {
   return date.toLocaleString();
 }; 
 
-const Reaction = model("Reaction", reactionSchema);
+// const Reaction = model("Reaction", reactionSchema);
 
 // EXPORT ----------------------------------------------------
-module.exports = Reaction;
+module.exports = reactionSchema;
