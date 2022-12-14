@@ -7,8 +7,7 @@ Create your own data using Insomnia after you’ve created your API.
 Because this application won’t be deployed, create a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met.
 
 ## Link to Video of App Demo: 
-
-! [![Watch the Demo](https://img.youtube.com/vi/ao6QQ4t8Xdg/maxresdefault.jpg)](https://www.youtube.com/watch?v=ao6QQ4t8Xdg)
+[![Watch the Demo](https://img.youtube.com/vi/ao6QQ4t8Xdg/maxresdefault.jpg)](https://www.youtube.com/watch?v=ao6QQ4t8Xdg)
 
 <!-- ## Notes -->
 <!-- Use this area to add personal notes on implementation, etc -->
