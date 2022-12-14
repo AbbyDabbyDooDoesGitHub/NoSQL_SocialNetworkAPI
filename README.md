@@ -8,8 +8,7 @@ Because this application won’t be deployed, create a walkthrough video that de
 
 ## Link to Video of App Demo: 
 
-<!--! [![Watch the Demo](https://img.youtube.com/vi/cYn3SDIv0MQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=cYn3SDIv0MQ)
-[You can also check out this example of an index.html file generated with the app.](/utils/exGenIndex.html) -->
+! [![Watch the Demo](https://img.youtube.com/vi/ao6QQ4t8Xdg/maxresdefault.jpg)](https://www.youtube.com/watch?v=ao6QQ4t8Xdg)
 
 <!-- ## Notes -->
 <!-- Use this area to add personal notes on implementation, etc -->
@@ -135,78 +134,12 @@ This will not be a model, but rather will be used as the `reaction` field's subd
 ## Resources Used 
 
 ### Technology
-<!-- - [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4)
-- [jQuery Library](https://jquery.com/) -->
-
-<!-- ### Icons
-- Manager Icon: [Briefcase by ainul muttaqin from the Noun Project](https://thenounproject.com/browse/icons/term/briefcase/)
-- Engineer Icon: [Engineer by Adrien Coquet from the Noun Project](https://thenounproject.com/browse/icons/term/engineer/)
-- Student Icon: [Student by Adrien Coquet from the Noun Project](https://thenounproject.com/browse/icons/term/student/) -->
+- [Express.js](https://www.npmjs.com/package/express) 
+- [Mongoose](https://www.npmjs.com/package/mongoose) 
+- [OBS: Open Broadcaster Software (for walkthrough)](https://obsproject.com/download)
 
 ### Helpful Resources
-<!-- - [Use Inquirer.js to Create a Conversational CLI User Interface by Janne Kemppainen](https://pakstech.com/blog/inquirer-js/)
-- [Inquirer.js: A collection of common interactive command line user interfaces](https://www.npmjs.com/package/inquirer/v/8.2.4#prompt)
-- [How to use Inquirer.js by Mat Wilmot](https://javascript.plainenglish.io/how-to-inquirer-js-c10a4e05ef1f)
-- [How to use the Inquirer Node package by Jon Deavers](https://www.educative.io/answers/how-to-use-the-inquirer-node-package) -->
-
-
-
-
-
-
-
-
-
-<!--! GIVEN a social network API -->
-
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
-
-
-<!--! A walkthrough video that demonstrates the functionality of the social media API must be submitted, and a link to the video should be included in your README file. -->
-
-  * show all of the technical acceptance criteria being met.
-
-  * demonstrate how to start the application’s server.
-
-  * demonstrate GET routes for all users and all thoughts being tested in Insomnia.
-
-  * demonstrate GET routes for a single user and a single thought being tested in Insomnia.
-
-  * demonstrate POST, PUT, and DELETE routes for users and thoughts being tested in Insomnia.
-
-  * demonstrate POST and DELETE routes for a user’s friend list being tested in Insomnia.
-
-  * demonstrate POST and DELETE routes for reactions to thoughts being tested in Insomnia.
-
-<!--! Satisfies all of the preceding acceptance criteria plus the following: -->
-
-  * Uses the [Mongoose package](https://www.npmjs.com/package/mongoose) to connect to a MongoDB database.
-
-  * Includes User and Thought models outlined in the Challenge instructions.
-
-  * Includes schema settings for User and Thought models as outlined in the Challenge instructions.
-
-  * Includes Reactions as the `reaction` field's subdocument schema in the Thought model.
-
-  * Uses functionality to format queried timestamps properly.
-
-<!--! You are required to submit BOTH of the following for review: -->
-
-* A walkthrough video 
-* The URL of the GitHub repository
-
-
-
+- [mongoose-model-cli by GitHub user acarl005](https://github.com/acarl005/mongoose-cli)
 
 
 
